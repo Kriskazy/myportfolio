@@ -17,6 +17,10 @@ const server = http.createServer((req, res) => {
     case "/contact":
       path += "contact.html";
       break;
+    case "/home":
+      res.statusCode = 301;
+      res.setHeader("location", "/");
+      res.end();
   }
 
   //send an html file
@@ -24,8 +28,8 @@ const server = http.createServer((req, res) => {
     if (err) {
       console.log(err);
     } else {
-      res.write(data);
-      res.end();
+      //res.write(data);
+      res.end(data);
     }
   });
 });
